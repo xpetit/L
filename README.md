@@ -26,7 +26,7 @@ b * c == 0.7 // true
 
 C'est un mélange de deux idées qui IMO rendent le dev et les implémentations soft & hard plus simples.
 
-### fixed-point number (big numbers)
+### fixed-point number
 
 Le fixed-point permet d'avoir une précision absolue, c'est grosso modo comme utiliser un int en rajoutant une virgule quelque part au milieu. Ça permet d'éviter : `7 * 0.1 != 0.7`
 
@@ -36,7 +36,7 @@ https://www.microcontrollertips.com/difference-between-fixed-and-floating-point
 https://en.wikipedia.org/wiki/Fixed-point_arithmetic
 https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number
 
-### arbitrary-precision arithmetic
+### arbitrary-precision arithmetic (big numbers)
 
 Et le bignum évite les overflows et permet de ne pas trop se soucier de la taille du nombre, elle reste limitée par la quantité de RAM mais on est à d'autres ordres de grandeurs que des nombres 64/128 bits.
 

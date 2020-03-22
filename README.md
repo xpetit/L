@@ -32,9 +32,9 @@ Le fixed-point permet d'avoir une précision absolue, c'est grosso modo comme ut
 
 Il y a de la littérature sur fixed vs float, et des raisons (plus historiques que techniques) sur pourquoi les float sont devenus privilégiés. Quelques liens :
 
-https://www.microcontrollertips.com/difference-between-fixed-and-floating-point
-https://en.wikipedia.org/wiki/Fixed-point_arithmetic
-https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number
+-   https://www.microcontrollertips.com/difference-between-fixed-and-floating-point
+-   https://en.wikipedia.org/wiki/Fixed-point_arithmetic
+-   https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number
 
 ### arbitrary-precision arithmetic (big numbers)
 

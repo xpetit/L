@@ -32,9 +32,9 @@ Le fixed-point permet d'avoir une précision absolue, c'est grosso modo comme ut
 
 Il y a de la littérature sur fixed vs float, et des raisons (plus historiques que techniques) sur pourquoi les float sont devenus privilégiés. Quelques liens :
 
--   https://www.microcontrollertips.com/difference-between-fixed-and-floating-point
--   https://en.wikipedia.org/wiki/Fixed-point_arithmetic
--   https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number
+- https://www.microcontrollertips.com/difference-between-fixed-and-floating-point
+- https://en.wikipedia.org/wiki/Fixed-point_arithmetic
+- https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number
 
 ### arbitrary-precision arithmetic (big numbers)
 
@@ -68,8 +68,8 @@ Les tableaux pourraient aussi servir aux I/O de fonctions (arguments en entrée,
 
 Autre questionnements :
 
--   un tableau est indexé à 0 par défaut, est-ce qu'on ne permettrait pas de changer ça ?
--   puisque qu'un tableau est par définition associatif avec des entiers naturels en tant que clefs, est-ce qu'on ne mixerait pas ce concept (associative array, map, dictionnary, hashmap, key-value store, c'est la même chose essentiellement) avec le tableau ?
+- un tableau est indexé à 0 par défaut, est-ce qu'on ne permettrait pas de changer ça ?
+- puisque qu'un tableau est par définition associatif avec des entiers naturels en tant que clefs, est-ce qu'on ne mixerait pas ce concept (associative array, map, dictionnary, hashmap, key-value store, c'est la même chose essentiellement) avec le tableau ?
 
 Il y a des similitudes entre un tableau classique et une map :
 
@@ -129,6 +129,10 @@ Ensuite le caller peut faire le tri dans l'exception qu'il choppe (en plus bien 
 if error in IO_errors then
   ...
 ```
+
+### liens
+
+https://en.wikipedia.org/wiki/Semipredicate_problem
 
 ## bool
 
@@ -190,9 +194,9 @@ Mais bon y a encore pas mal de caractères unicodes bizarres qu'on ne compterait
 
 On a le choix :
 
--   ne rien faire : `lol 💖` fait une longueur de 8, car une `string` est un tableau d'octets, et l'encodage on considère que c'est des soucis d'interfaçage, on ne peut pas facilement connaître la vraie longueur du string et on ne peut pas facilement accéder à un caractère particulier. Si on code de manière générique la lib de string, elle pourra être réutilisée quand on gérera les "grapheme clusters". Mais c'est compliqué : un graphème peut contenir plusieurs lettres dans pas mal de langues (dont le coréen) ! Ce qui donne une situation vraiment tricky : la longueur d'une string coréenne c'est le nombre de graphèmes, mais si on veut comparer/trier il faut se baser sur les lettres 🤦
--   bien faire : à la limite on peut le faire plus tard en créant un autre type `text` où on prend la chose au sérieux mais ça demande de se renseigner sur tous les langages écrits de la terre, de bien comprendre toutes les implications et la faisabilité de ça. Il faudra sûrement tester le Swift pour voir comment ils font et est-ce que ça marche même en Arabe leur type `Character`.
--   être nazi : on autorise qu'un subset de l'unicode, ça peut même aller jusqu'à interdire les emojis blacks, les signes diacritiques et les accents. Tout le monde écrit de l'anglais et comme ça tout le monde se comprend, on a un processing de texte super rapide et compact avec des caractères limités. Je ne plaisante qu'à moitié, y a énormément de caractères unicodes qui ne seront jamais utilisés (les pièces d'échec, c'est illisible tellement c'est petit : ♔♕♖♗♘♙♚♛♜♝♞♟). Cette solution devrait sûrement être laissée au choix du dev.
+- ne rien faire : `lol 💖` fait une longueur de 8, car une `string` est un tableau d'octets, et l'encodage on considère que c'est des soucis d'interfaçage, on ne peut pas facilement connaître la vraie longueur du string et on ne peut pas facilement accéder à un caractère particulier. Si on code de manière générique la lib de string, elle pourra être réutilisée quand on gérera les "grapheme clusters". Mais c'est compliqué : un graphème peut contenir plusieurs lettres dans pas mal de langues (dont le coréen) ! Ce qui donne une situation vraiment tricky : la longueur d'une string coréenne c'est le nombre de graphèmes, mais si on veut comparer/trier il faut se baser sur les lettres 🤦
+- bien faire : à la limite on peut le faire plus tard en créant un autre type `text` où on prend la chose au sérieux mais ça demande de se renseigner sur tous les langages écrits de la terre, de bien comprendre toutes les implications et la faisabilité de ça. Il faudra sûrement tester le Swift pour voir comment ils font et est-ce que ça marche même en Arabe leur type `Character`.
+- être nazi : on autorise qu'un subset de l'unicode, ça peut même aller jusqu'à interdire les emojis blacks, les signes diacritiques et les accents. Tout le monde écrit de l'anglais et comme ça tout le monde se comprend, on a un processing de texte super rapide et compact avec des caractères limités. Je ne plaisante qu'à moitié, y a énormément de caractères unicodes qui ne seront jamais utilisés (les pièces d'échec, c'est illisible tellement c'est petit : ♔♕♖♗♘♙♚♛♜♝♞♟). Cette solution devrait sûrement être laissée au choix du dev.
 
 La première solution me tente plus dans un premier temps. Et dans tous les cas on pourrait build le type `string` sur celui de l'array
 
@@ -309,26 +313,26 @@ Ou alors on aligne sur le début du texte plutôt que le niveau d'identation (ç
 
 Là on a plusieurs solutions :
 
--   deux symboles différents (habituellement `=` et `==`, parfois `:=`, `=` (Ada))
--   même symbole (`=`) mais la différence est liée au contexte, si on décide de ça, la syntaxe ne doit permettre aucune ambiguïté là-dessus
--   pas de symbole pour l'affectation (comme en asm), là encore en se basant sur le contexte, on peut qu'après un espace une valeur est attendue et sera affectée.
+- deux symboles différents (habituellement `=` et `==`, parfois `:=`, `=` (Ada))
+- même symbole (`=`) mais la différence est liée au contexte, si on décide de ça, la syntaxe ne doit permettre aucune ambiguïté là-dessus
+- pas de symbole pour l'affectation (comme en asm), là encore en se basant sur le contexte, on peut qu'après un espace une valeur est attendue et sera affectée.
 
-    ```
-    a 1
-    b 2
-    if a + b = 3 then
-      print `obviously`
-    fi
-    ```
+  ```
+  a 1
+  b 2
+  if a + b = 3 then
+    print `obviously`
+  fi
+  ```
 
-    ```
-    robin [
-      name `Robin`
-      age 11
-      height 1.68
-      weight 51
-    ]
-    ```
+  ```
+  robin [
+    name `Robin`
+    age 11
+    height 1.68
+    weight 51
+  ]
+  ```
 
 Je serais plus pour mettre deux symboles différents, ou en tout cas d'éviter à tout prix la réutilisation du symbole (qui n'a de fondement mathématique) pour éviter de perdre les débutants qui risquent d'encore moins discerner la distinction entre affecter et tester l'égalité.
 
@@ -380,6 +384,10 @@ Ptr : access Integer := I'access;
 `if ...` ? Et pour le bloc qui suit `do ... done` ? `then end` ?
 
 `loop` ? On oublie `for`, `while` et `until` qui ne font gagner que quelques maigres lignes (mais pas de caractères en général, donc la densité d'information est la même)
+
+### liens
+
+https://en.wikipedia.org/wiki/Control_flow
 
 ## concaténation
 
